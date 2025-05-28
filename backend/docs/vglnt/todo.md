@@ -3,49 +3,59 @@
 ## Morning (4 hours)
 
 ### 1. Prerequisites Setup (1.5 hours)
-- [ ] Set up development environment with Python 3.11 and Node.js
-- [ ] Install Docker and Docker Compose
-- [ ] Request access for accounts to the required services:
+- [x] Set up development environment with Python 3.11 and Node.js
+- [x] Install Docker and Docker Compose
+- [x] Request access for accounts to the required services:
   - Supabase (database and authentication)
   - Upstash or local Redis instance
   - Daytona (agent execution environment)
   - Anthropic API (for Claude integration)
 
 ### 2. Repository Setup (1 hour)
-- [ ] Fork the Suna repository to your GitHub account
-- [ ] Clone the repository locally
+- [x] Fork the Suna repository to your GitHub account
+- [x] Clone the repository locally
 - [ ] Examine the project structure and documentation
 - [ ] Read through the README.md and understand the architecture
 
 ### 3. Service Configuration (1.5 hours)
-- [ ] Create and configure Supabase project
-- [ ] Set up Redis instance (via Upstash or Docker)
-- [ ] Configure Daytona workspace
-- [ ] Obtain necessary API keys (Anthropic, Tavily, Firecrawl)
+- [x] Create and configure Supabase project
+- [x] Set up Redis instance (via Upstash or Docker)
+- [x] Configure Daytona workspace
+- [x] Obtain necessary API keys (Anthropic, Tavily, Firecrawl)
 
 ## Afternoon (4 hours)
 
 ### 4. Environment Configuration (2 hours)
-- [ ] Configure backend .env file with all required credentials
-- [ ] Configure frontend .env.local file
-- [ ] Set up Supabase database schema using migrations
-- [ ] Verify all service connections
+- [x] Configure backend .env file with all required credentials
+- [x] Configure frontend .env.local file
+- [x] Set up Supabase database schema using migrations
+- [x] Verify all service connections
 
 ### 5. Initial Deployment (2 hours)
-- [ ] Install backend dependencies (pip install -r requirements.txt)
-- [ ] Install frontend dependencies (npm install)
-- [ ] Start services using Docker Compose
-- [ ] Verify application is running on localhost:3000
-- [ ] Test basic authentication flow
+- [x] Install backend dependencies (pip install -r requirements.txt)
+- [x] Install frontend dependencies (npm install)
+- [x] Start services using Docker Compose
+- [x] Verify application is running on localhost:3000
+- [x] Test basic authentication flow
 
 # Day 2: Feature Development and Integration
 
 ## 6. Core Functionality Testing (2 hours)
-- [ ] Create user account and test authentication
-- [ ] Test basic chat functionality
-- [ ] Verify agent execution environment is working
-- [ ] Test file management capabilities
+- [x] Create user account and test authentication
+![img.png](img.png)
+- [x] Test basic chat functionality
+![img_1.png](img_1.png)
+- [x] Verify agent execution environment is working
+  - Daytona is spin up and working
+![img_5.png](img_5.png)
+![img_4.png](img_4.png)
+- [x] Test file management capabilities
+  - Can do upload file
+![img_6.png](img_6.png)
 - [ ] Test web search integration
+  - Firecrawl is working
+![img_2.png](img_2.png)
+![img_3.png](img_3.png)
 
 ## 7. Code Analysis and Understanding (2 hours)
 - [ ] Analyze the agent execution flow in backend/agent/
