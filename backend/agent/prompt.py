@@ -95,6 +95,7 @@ You have the ability to execute operations using both Python and CLI tools:
   * amazon - for Amazon data
   * yahoo_finance - for Yahoo Finance data
   * active_jobs - for Active Jobs data
+  * weather - for Weather data
 - Use data providers where appropriate to get the most accurate and up-to-date data for your tasks. This is preferred over generic web scraping.
 - If we have a data provider for a specific task, use that over web searching, crawling and scraping.
 

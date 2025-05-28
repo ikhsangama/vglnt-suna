@@ -6,6 +6,7 @@ from agent.tools.data_providers.YahooFinanceProvider import YahooFinanceProvider
 from agent.tools.data_providers.AmazonProvider import AmazonProvider
 from agent.tools.data_providers.ZillowProvider import ZillowProvider
 from agent.tools.data_providers.TwitterProvider import TwitterProvider
+from agent.tools.data_providers.WeatherProvider import WeatherProvider
 
 class DataProvidersTool(Tool):
     """Tool for making requests to various data providers."""
@@ -18,7 +19,8 @@ class DataProvidersTool(Tool):
             "yahoo_finance": YahooFinanceProvider(),
             "amazon": AmazonProvider(),
             "zillow": ZillowProvider(),
-            "twitter": TwitterProvider()
+            "twitter": TwitterProvider(),
+            "weather": WeatherProvider()
         }
 
     @openapi_schema({
@@ -31,7 +33,7 @@ class DataProvidersTool(Tool):
                 "properties": {
                     "service_name": {
                         "type": "string",
-                        "description": "The name of the data provider (e.g., 'linkedin', 'twitter', 'zillow', 'amazon', 'yahoo_finance')"
+                        "description": "The name of the data provider (e.g., 'linkedin', 'twitter', 'zillow', 'amazon', 'yahoo_finance', 'weather_api')"
                     }
                 },
                 "required": ["service_name"]
@@ -150,6 +152,7 @@ Use this tool when you need to discover what endpoints are available.
                 return self.fail_response("route is required.")
                 
             if service_name not in self.register_data_providers:
+                print('ikhsan>1', service_name, list(self.register_data_providers.keys()))
                 return self.fail_response(f"API '{service_name}' not found. Available APIs: {list(self.register_data_providers.keys())}")
             
             data_provider = self.register_data_providers[service_name]
@@ -158,8 +161,8 @@ Use this tool when you need to discover what endpoints are available.
             
             if route not in data_provider.get_endpoints().keys():
                 return self.fail_response(f"Endpoint '{route}' not found in {service_name} data provider.")
-            
-            
+
+            print('ikhsan>2', service_name, list(self.register_data_providers.keys()))
             result = data_provider.call_endpoint(route, payload)
             return self.success_response(result)
             
