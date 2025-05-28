@@ -52,7 +52,7 @@
 - [x] Test file management capabilities
   - Can do upload file
 ![img_6.png](img_6.png)
-- [ ] Test web search integration
+- [x] Test web search integration
   - Firecrawl is working
 ![img_2.png](img_2.png)
 ![img_3.png](img_3.png)
