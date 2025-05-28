@@ -68,10 +68,12 @@
 Choose ONE of the following features to implement:
 
 ### Option A: Custom Tool Integration
-- [ ] Create a new tool in backend/agent/tools/
-- [ ] Implement a weather API integration tool
-- [ ] Add the tool to the agent's toolkit
-- [ ] Test the tool functionality through chat interface
+- [x] Create a new tool in backend/agent/tools/
+- [x] Implement a weather API integration tool
+- [x] Add the tool to the agent's toolkit
+- [x] Test the tool functionality through chat interface
+- Weather api functionality is working
+![img_8.png](img_8.png)
 
 ### Option B: Frontend Enhancement
 - [ ] Add a new dashboard component for conversation analytics
