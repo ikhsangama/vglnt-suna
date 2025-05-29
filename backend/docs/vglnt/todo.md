@@ -14,8 +14,43 @@
 ### 2. Repository Setup (1 hour)
 - [x] Fork the Suna repository to your GitHub account
 - [x] Clone the repository locally
-- [ ] Examine the project structure and documentation
-- [ ] Read through the README.md and understand the architecture
+- [x] Examine the project structure and documentation
+- Frontend
+  - **`/app`**: Contains the application routes using Next.js App Router
+    - **`/auth`**: Authentication-related pages (login, signup, reset password)
+    - **`/(dashboard)`**: Dashboard and authenticated user routes
+      - **`/dashboard`**: Main dashboard page
+      - **`/agents`**: Agent management pages
+      - **`/(teamAccount)/[accountSlug]`**: Team-specific pages
+    - **`/invitation`**: Team invitation acceptance page
+
+  - **`/components`**: Reusable UI components
+    - **`/basejump`**: Team management components
+    - **`/thread`**: Conversation thread components
+    - **`/ui`**: Basic UI components (buttons, cards, etc.)
+
+  - **`/hooks`**: Custom React hooks
+    - **`/react-query`**: Data fetching hooks organized by feature
+
+  - **`/lib`**: Utility functions and services
+    - **`/actions`**: Server actions for form submissions
+    - **`/supabase`**: Supabase client configuration
+
+  - **`/contexts`**: React context providers
+  - **`/providers`**: Application providers (Auth, React Query, etc.)
+- Backend
+  - **`/agent`**: Core AI agent implementation
+    - **`/sample_responses`**: Teach AI with sample response as reference
+    - **`/tools`**: Various tools
+      - **`/data_providers`**: For different services with API calls from RapidAPI
+  - **`/agentpress`**: Manage AI agent interactions and execution, like how to handle context and thread
+  - **`/docs`**: Document files
+  - **`/logs`**: Generated logs by agentpress system
+  - **`/sandbox`**: To create a Docker-based virtual environment (host in Daytona) that agents use as their own computer to execute tasks, access the web, and manipulate files
+  - **`/services`**: Core infrastructure service (llm, supabase, redis, billing, langfuse)
+  - **`/supabase`**: Migration files, supabase config, etc
+  - **`/utils`**: Authentication, file handling, logger, S3 upload, config managements
+- [x] Read through the README.md and understand the architecture
 
 ### 3. Service Configuration (1.5 hours)
 - [x] Create and configure Supabase project
