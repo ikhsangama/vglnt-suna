@@ -93,10 +93,70 @@
 ![img_3.png](img_3.png)
 
 ## 7. Code Analysis and Understanding (2 hours)
-- [ ] Analyze the agent execution flow in backend/agent/
-- [ ] Understand the tool system architecture
+- [x] Analyze the agent execution flow in backend/agent/
+  - Entry points at `api.py` and API endpoints defined in `/agent/api.py` with `/api` prefix
+  - Definition: Everytime a user creates a new conversation (series of related chat), it is considered as a new project,
+  - A new project then will create a new thread (refer to: `@router.post("/agent/initiate"`)
+  - Each new chat in a thread, it will trigger a new agent
+  - Thread can have multiple agents, but a project can only have a new thread (but the DB actually supports 1 to many relations to thread)
+- [x] Understand the tool system architecture
+  - `data_providers_tool.py`
+    - Registry for all providers to collect data
+    - Providers located in `/agent/tools/data_providers`
+    - Providers inherits from `RapidDataProviderBase`
+    - Providers are some APIs that are listed in RapidAPI
+    - To make new providers recognized, need to update the system prompt as well in `/agent/prompt.py` section `2.2.7 DATA PROVIDERS`
+  - `web_search_tool.py`
+    - Perform web searches using TavilyAPI
+    - Perform extract text context from web pages using FireCrawlAPI
+  - `sb_browser_tool.py`
+    - Browser automation for web interaction (click button by element, take screenshot)
+  - `sb_vision_tool.py`
+    - Read images files from the file system
+  - `sb_files_tool.py`
+    - File operations in the sandbox
+  - `sb_shell_tool.py`
+    - Shell command execution
+  - `computer_use_tool.py`
+    - General computer operations
+  - `sb_deploy_tool.py`
+    - Site deployment operation using CloudFlareAPI
+  - `sb_expose_tool.py`
+    - Exposing services from the sandbox
+  - `message_tool.py`
+    - Messaging capabilities, web-browser take over
 - [ ] Examine the frontend components and API integration
-- [ ] Study the database schema and data models
+  - Frontend
+    - #TODO
+  - Backend
+    - Agent API endpoints:
+      - **`POST /thread/{thread_id}/agent/start`**: Start an agent for a specific thread in background
+      - **`POST /agent-run/{agent_run_id}/stop`**: Stop running agent
+      - **`GET /thread/{thread_id}/agent-runs`**: Get all agents runs for a specific thread
+      - **`GET /agent-run/{agent_run_id}`**: Get details of specific agent run
+      - **`GET /agent-run/{agent_run_id}/stream`**: Stream real-time responses from an agent run
+      - **`POST /agent/initiate`**: Create a new agent
+- [ ] Study the database schema and data models (I try to focus on project / agent capabilities)
+  - Tables
+    - `projects`
+      - Schema: Top level container for conversations
+      - Fields: `project_id`, `name`, `description`, `account_id`, `sandbox`, `is_public`
+    - `threads`
+      - Schema: Conversation threads within projects
+      - Fields: `thread_id`, `account_id`, `project_id`, `is_public`
+    - `messages`
+      - Individual messages within threads
+      - Fields: `message_id`, `thread_id`, `type`, `is_llm_message`, `content`, `metadata`
+      - Content is stored as JSONB for flexibility (#TODO)
+    - `agents`
+      - Execution instances of AI agents
+      - Fields: `id`, `thread_id`, `status`, `started_at`, `completed_at`, `responses`, `error`
+  - Table Relations
+    - Account -> Project (1:N)
+    - Project -> Threads (1:N)
+    - Thread -> Messages (1:N)
+    - Project -> Agent Runs (1:N)
+    - Thread -> Agent Runs (1:N)
 
 ## 8. Custom Feature Implementation (4 hours)
 
@@ -106,7 +166,7 @@ Choose ONE of the following features to implement:
 - [x] Create a new tool in backend/agent/tools/
 - [x] Implement a weather API integration tool
 - [x] Add the tool to the agent's toolkit
-- [x] Test the tool functionality through chat interface
+- [x] Test the tool functionality through chat interfaces
 - Weather api functionality is working
 ![img_8.png](img_8.png)
 
