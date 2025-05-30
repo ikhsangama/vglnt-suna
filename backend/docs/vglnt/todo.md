@@ -125,9 +125,18 @@
     - Exposing services from the sandbox
   - `message_tool.py`
     - Messaging capabilities, web-browser take over
-- [ ] Examine the frontend components and API integration
+- [x] Examine the frontend components and API integration
   - Frontend
-    - #TODO
+    - **`/components`**: Reusable UI components
+      - **`/basejump`**: Team management components
+      - **`/billing`**: Billing usage components
+      - **`/file-renderers`**: Handle rendering response (markdown, code, pdf, etc) components
+      - **`/home`**: Home page components
+      - **`/thread`**: Conversation thread components
+      - **`/ui`**: Basic UI components (buttons, cards, etc.)
+      - **`/maintenance`**: Maintenance page
+      - **`/payment`**: Payment dialog
+      - **`AuthProvider`**: OAuth flow
   - Backend
     - Agent API endpoints:
       - **`POST /thread/{thread_id}/agent/start`**: Start an agent for a specific thread in background
@@ -136,7 +145,7 @@
       - **`GET /agent-run/{agent_run_id}`**: Get details of specific agent run
       - **`GET /agent-run/{agent_run_id}/stream`**: Stream real-time responses from an agent run
       - **`POST /agent/initiate`**: Create a new agent
-- [ ] Study the database schema and data models (I try to focus on project / agent capabilities)
+- [x] Study the database schema and data models (I try to focus on project / agent capabilities)
   - Tables
     - `projects`
       - Schema: Top level container for conversations
@@ -147,7 +156,10 @@
     - `messages`
       - Individual messages within threads
       - Fields: `message_id`, `thread_id`, `type`, `is_llm_message`, `content`, `metadata`
-      - Content is stored as JSONB for flexibility (#TODO)
+      - Content is stored as JSONB for flexibility
+        - Storing role: system / user / assistant message
+        - Storing receiving signal: start / stop / finish
+        - Storing cost
     - `agents`
       - Execution instances of AI agents
       - Fields: `id`, `thread_id`, `status`, `started_at`, `completed_at`, `responses`, `error`
