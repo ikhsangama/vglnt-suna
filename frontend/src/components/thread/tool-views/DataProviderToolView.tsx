@@ -15,7 +15,8 @@ import {
   Play,
   ChevronRight,
   Search,
-  Globe
+  Globe,
+  Cloud,
 } from 'lucide-react';
 import { ToolViewProps } from './types';
 import {
@@ -73,7 +74,7 @@ const PROVIDER_CONFIG = {
     borderColor: 'border-blue-200 dark:border-blue-800'
   },
   'twitter': {
-    name: 'Twitter Data Provider', 
+    name: 'Twitter Data Provider',
     icon: MessageCircle,
     color: 'from-sky-400 to-sky-500',
     bgColor: 'bg-sky-50 dark:bg-sky-900/20',
@@ -111,6 +112,14 @@ const PROVIDER_CONFIG = {
     bgColor: 'bg-indigo-50 dark:bg-indigo-900/20',
     textColor: 'text-indigo-700 dark:text-indigo-300',
     borderColor: 'border-indigo-200 dark:border-indigo-800'
+  },
+  'weather': {
+    name: 'Weather Data Provider',
+    icon: Cloud,
+    color: 'from-indigo-500 to-indigo-600',
+    bgColor: 'bg-indigo-50 dark:bg-indigo-900/20',
+    textColor: 'text-indigo-700 dark:text-indigo-300',
+    borderColor: 'border-indigo-200 dark:border-indigo-800'
   }
 };
 
@@ -136,10 +145,10 @@ export function ExecuteDataProviderCallToolView({
   }, [assistantContent, toolContent]);
 
   const providerKey = parsedCall.serviceName?.toLowerCase() as keyof typeof PROVIDER_CONFIG;
-  const providerConfig = providerKey && PROVIDER_CONFIG[providerKey] 
-    ? PROVIDER_CONFIG[providerKey] 
+  const providerConfig = providerKey && PROVIDER_CONFIG[providerKey]
+    ? PROVIDER_CONFIG[providerKey]
     : PROVIDER_CONFIG['linkedin'];
-  
+
   const IconComponent = providerConfig.icon;
 
   return (
@@ -156,14 +165,14 @@ export function ExecuteDataProviderCallToolView({
               </CardTitle>
             </div>
           </div>
-          
+
           {!isStreaming && (
-            <Badge 
-              variant="secondary" 
+            <Badge
+              variant="secondary"
               className={cn(
                 "text-xs font-medium",
-                isSuccess 
-                  ? "bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-900/20 dark:text-emerald-300 dark:border-emerald-800" 
+                isSuccess
+                  ? "bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-900/20 dark:text-emerald-300 dark:border-emerald-800"
                   : "bg-red-50 text-red-700 border-red-200 dark:bg-red-900/20 dark:text-red-300 dark:border-red-800"
               )}
             >
@@ -203,7 +212,7 @@ export function ExecuteDataProviderCallToolView({
               )}>
                 <IconComponent className="h-6 w-6 text-white drop-shadow-sm" />
               </div>
-              
+
               <div className="flex-1">
                 <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
                   {providerConfig.name}
@@ -214,7 +223,7 @@ export function ExecuteDataProviderCallToolView({
                   </p>
                 )}
               </div>
-              
+
               {parsedCall.route && (
                 <Badge variant="outline" className="text-xs font-mono">
                   {parsedCall.route}
@@ -230,7 +239,7 @@ export function ExecuteDataProviderCallToolView({
                 </div>
                 <div className="grid gap-3">
                   {Object.entries(parsedCall.jsonContent).map(([key, value]) => (
-                    <div 
+                    <div
                       key={key}
                       className="flex items-center justify-between p-3 bg-white dark:bg-zinc-900 rounded-lg border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800/50 transition-colors"
                     >
@@ -252,7 +261,7 @@ export function ExecuteDataProviderCallToolView({
                     <span>Raw JSON</span>
                     <ChevronRight className="h-3 w-3 text-zinc-400 group-open:rotate-90 transition-transform" />
                   </summary>
-                  
+
                   <div className="mt-3 p-4 bg-zinc-900 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800">
                     <pre className="text-xs font-mono text-emerald-400 dark:text-emerald-300 overflow-x-auto">
                       {JSON.stringify(parsedCall.jsonContent, null, 2)}
