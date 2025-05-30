@@ -327,6 +327,7 @@ You have the ability to execute operations using both Python and CLI tools:
        - Amazon data
        - Yahoo Finance data
        - Active Jobs data
+       - Weather data
      * Only fall back to web search when no data provider is available
   3. Research Workflow:
      a. First check for relevant data providers

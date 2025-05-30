@@ -105,7 +105,7 @@
     - Providers located in `/agent/tools/data_providers`
     - Providers inherits from `RapidDataProviderBase`
     - Providers are some APIs that are listed in RapidAPI
-    - To make new providers recognized, need to update the system prompt as well in `/agent/prompt.py` section `2.2.7 DATA PROVIDERS`
+    - To make new providers recognized, need to update the system prompt as well in `/agent/prompt.py` section `2.2.7 DATA PROVIDERS` and `4.4 WEB SEARCH & CONTENT EXTRACTION`
   - `web_search_tool.py`
     - Perform web searches using TavilyAPI
     - Perform extract text context from web pages using FireCrawlAPI
