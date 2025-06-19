@@ -1,0 +1,11 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  "framework": "nextjs",
+  "rewrites": [
+    {
+      "source": "/((?!api|_next|_static|_vercel|favicon.ico|monitoring|.*\\..*).*)",
+      "destination": "/"
+    }
+  ]
+}
