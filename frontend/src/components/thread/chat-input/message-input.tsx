@@ -176,7 +176,7 @@ export const MessageInput = forwardRef<HTMLTextAreaElement, MessageInputProps>(
               onClick={isAgentRunning && onStopAgent ? onStopAgent : onSubmit}
               size="sm"
               className={cn(
-                'w-7 h-7 flex-shrink-0 self-end',
+                'w-10 h-10 flex-shrink-0 self-end rounded-full',
                 isAgentRunning ? 'bg-red-500 hover:bg-red-600' : '',
                 (!value.trim() && uploadedFiles.length === 0 && !isAgentRunning) ||
                   loading ||
@@ -191,11 +191,11 @@ export const MessageInput = forwardRef<HTMLTextAreaElement, MessageInputProps>(
               }
             >
               {loading ? (
-                <Loader2 className="h-4 w-4 animate-spin" />
+                <Loader2 className="size-5 animate-spin" />
               ) : isAgentRunning ? (
-                <Square className="h-4 w-4" />
+                <Square className="size-5" />
               ) : (
-                <ArrowUp className="h-4 w-4" />
+                <ArrowUp className="size-5" />
               )}
             </Button>
           </div>

@@ -8,6 +8,7 @@ import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useProjects, useAllThreads } from '@/hooks/react-query';
 import type { Project } from '@/lib/api';
+import { Conversation } from '@/components/ui/conversation';
 
 // Define the Agent type that combines project and thread data
 interface Agent {
@@ -21,11 +22,11 @@ interface Agent {
 
 export default function AgentsPage() {
   const [agents, setAgents] = useState<Agent[]>([]);
-  
+
   // Use React Query hooks
   const { data: projectsData = [], isLoading: projectsLoading, error: projectsError } = useProjects();
   const { data: allThreads = [], isLoading: threadsLoading } = useAllThreads();
-  
+
   const isLoading = projectsLoading || threadsLoading;
   const error = projectsError ? (projectsError instanceof Error ? projectsError.message : 'An error occurred loading agents') : null;
 
@@ -102,7 +103,7 @@ export default function AgentsPage() {
         </div>
       ) : agents.length === 0 ? (
         <div className="flex flex-col items-center justify-center p-8 text-center border rounded-md">
-          <MessagesSquare className="h-12 w-12 text-muted-foreground mb-4" />
+          <Conversation className="h-12 w-12 text-muted-foreground mb-4" />
           <h2 className="text-xl font-semibold mb-2">No agents yet</h2>
           <p className="text-muted-foreground max-w-md mb-4">
             Create your first agent to start automating tasks and getting help

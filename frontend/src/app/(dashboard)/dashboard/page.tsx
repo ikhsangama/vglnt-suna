@@ -175,10 +175,10 @@ function DashboardContent() {
               "text-2xl",
               "sm:text-3xl sm:mt-3 sm:px-4"
             )}>
-              What would you like Suna to do today?
+              What would you like Sandbay to do today?
             </p>
           </div>
-          
+
           <div className={cn(
             "w-full mb-2",
             "max-w-full",
@@ -194,7 +194,7 @@ function DashboardContent() {
               hideAttachments={false}
             />
           </div>
-          
+
           <Examples onSelectPrompt={setInputValue} />
         </div>
 

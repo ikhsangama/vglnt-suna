@@ -49,17 +49,17 @@ export interface PricingTier {
 }
 
 export const siteConfig = {
-  name: 'Kortix Suna',
+  name: 'Sandbay AI',
   description: 'The Generalist AI Agent that can act on your behalf.',
   cta: 'Start Free',
   url: process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000',
   keywords: ['AI Agent', 'Generalist AI', 'Open Source AI', 'Autonomous Agent'],
   links: {
-    email: 'support@kortix.ai',
-    twitter: 'https://x.com/kortixai',
-    discord: 'https://discord.gg/kortixai',
-    github: 'https://github.com/Kortix-ai/Suna',
-    instagram: 'https://instagram.com/kortixai',
+    email: 'tech@sandbay.ai',
+    // twitter: 'https://x.com/kortixai',
+    // discord: 'https://discord.gg/kortixai',
+    // github: 'https://github.com/Kortix-ai/Suna',
+    // instagram: 'https://instagram.com/kortixai',
   },
   nav: {
     links: [

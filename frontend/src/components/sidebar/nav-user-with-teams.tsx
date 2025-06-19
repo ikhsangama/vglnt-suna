@@ -48,6 +48,7 @@ import {
 } from '@/components/ui/dialog';
 import { createClient } from '@/lib/supabase/client';
 import { useTheme } from 'next-themes';
+import { ChevronUp } from '@/components/ui/chevron-up';
 
 export function NavUserWithTeams({
   user,
@@ -170,7 +171,7 @@ export function NavUserWithTeams({
               >
                 <Avatar className="h-8 w-8 rounded-lg">
                   <AvatarImage src={user.avatar} alt={user.name} />
-                  <AvatarFallback className="rounded-lg">
+                  <AvatarFallback className="rounded-lg bg-muted/24 dark:bg-muted/24">
                     {getInitials(user.name)}
                   </AvatarFallback>
                 </Avatar>
@@ -178,7 +179,7 @@ export function NavUserWithTeams({
                   <span className="truncate font-medium">{user.name}</span>
                   <span className="truncate text-xs">{user.email}</span>
                 </div>
-                <ChevronsUpDown className="ml-auto size-4" />
+                <ChevronUp className="ml-auto size-4" />
               </SidebarMenuButton>
             </DropdownMenuTrigger>
             <DropdownMenuContent
@@ -264,7 +265,7 @@ export function NavUserWithTeams({
 
               {/* <DropdownMenuSeparator />
               <DialogTrigger asChild>
-                <DropdownMenuItem 
+                <DropdownMenuItem
                   className="gap-2 p-2"
                   onClick={() => {
                     setShowNewTeamDialog(true)

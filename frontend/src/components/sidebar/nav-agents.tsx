@@ -47,6 +47,8 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { ThreadWithProject } from '@/hooks/react-query/sidebar/use-sidebar';
 import { processThreadsWithProjects, useDeleteMultipleThreads, useDeleteThread, useProjects, useThreads } from '@/hooks/react-query/sidebar/use-sidebar';
 import { projectKeys, threadKeys } from '@/hooks/react-query/sidebar/keys';
+import { NewChatButton } from '@/components/ui/new-chat-button';
+import { Conversation } from '@/components/ui/conversation';
 
 export function NavAgents() {
   const { isMobile, state } = useSidebar()
@@ -140,7 +142,7 @@ export function NavAgents() {
 
   // Function to handle thread click with loading state
   const handleThreadClick = (e: React.MouseEvent<HTMLAnchorElement>, threadId: string, url: string) => {
-    // If thread is selected, prevent navigation 
+    // If thread is selected, prevent navigation
     if (selectedThreads.has(threadId)) {
       e.preventDefault();
       return;
@@ -337,8 +339,16 @@ export function NavAgents() {
 
   return (
     <SidebarGroup>
+      <div className="space-y-3">
+        {/* New Chat Button - Prominently at top */}
+        {state !== 'collapsed' && (
+          <div className="px-1">
+            <NewChatButton variant="default" className="shadow-sm" />
+          </div>
+        )}
+      </div>
       <div className="flex justify-between items-center">
-        <SidebarGroupLabel>Tasks</SidebarGroupLabel>
+        <SidebarGroupLabel className="text-sm mt-3 mb-1">RECENTS</SidebarGroupLabel>
         {state !== 'collapsed' ? (
           <div className="flex items-center space-x-1">
             {selectedThreads.size > 0 ? (
@@ -369,22 +379,7 @@ export function NavAgents() {
                   <Trash2 className="h-4 w-4" />
                 </Button>
               </>
-            ) : (
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <div>
-                    <Link
-                      href="/dashboard"
-                      className="text-muted-foreground hover:text-foreground h-7 w-7 flex items-center justify-center rounded-md"
-                    >
-                      <Plus className="h-4 w-4" />
-                      <span className="sr-only">New Agent</span>
-                    </Link>
-                  </div>
-                </TooltipTrigger>
-                <TooltipContent>New Agent</TooltipContent>
-              </Tooltip>
-            )}
+            ) : null}
           </div>
         ) : null}
       </div>
@@ -449,7 +444,7 @@ export function NavAgents() {
                               {isThreadLoading ? (
                                 <Loader2 className="h-4 w-4 animate-spin" />
                               ) : (
-                                <MessagesSquare className="h-4 w-4" />
+                                <Conversation className="h-4 w-4" />
                               )}
                               <span>{thread.projectName}</span>
                             </Link>
@@ -477,13 +472,13 @@ export function NavAgents() {
                           className="flex items-center"
                         >
                           <div className="flex items-center group/icon relative">
-                            {/* Show checkbox on hover or when selected, otherwise show MessagesSquare */}
+                            {/* Show checkbox on hover or when selected, otherwise show Conversation */}
                             {isThreadLoading ? (
                               <Loader2 className="h-4 w-4 animate-spin" />
                             ) : (
                               <>
-                                {/* MessagesSquare icon - hidden on hover if not selected */}
-                                <MessagesSquare
+                                {/* Conversation icon - hidden on hover if not selected */}
+                                <Conversation
                                   className={`h-4 w-4 transition-opacity duration-150 ${isSelected ? 'opacity-0' : 'opacity-100 group-hover/icon:opacity-0'
                                     }`}
                                 />
@@ -572,7 +567,7 @@ export function NavAgents() {
         ) : (
           <SidebarMenuItem>
             <SidebarMenuButton className="text-sidebar-foreground/70">
-              <MessagesSquare className="h-4 w-4" />
+              <Conversation className="h-4 w-4" />
               <span>No agents yet</span>
             </SidebarMenuButton>
           </SidebarMenuItem>

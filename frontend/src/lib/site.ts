@@ -1,11 +1,12 @@
 export const siteConfig = {
-  name: 'Kortix Suna',
-  url: 'https://suna.so/',
-  description: 'Kortix AI',
+  name: 'Sandbay AI',
+  url: 'https://ai.sandbay.dev/', // TODO: CONFIRM
+  description: 'Sandbay AI',
   links: {
-    twitter: 'https://x.com/kortixai',
-    github: 'https://github.com/kortix-ai/',
-    linkedin: 'https://www.linkedin.com/company/kortix/',
+    email: 'tech@sandbay.ai',
+    // twitter: 'https://x.com/kortixai',
+    // github: 'https://github.com/kortix-ai/',
+    // linkedin: 'https://www.linkedin.com/company/kortix/',
   },
 };
 

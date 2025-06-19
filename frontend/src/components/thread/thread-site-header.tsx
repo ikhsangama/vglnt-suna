@@ -21,6 +21,8 @@ import { ShareModal } from "@/components/sidebar/share-modal"
 import { useQueryClient } from "@tanstack/react-query";
 import { projectKeys } from "@/hooks/react-query/sidebar/keys";
 import { threadKeys } from "@/hooks/react-query/threads/keys";
+import { Folder } from '@/components/ui/folder';
+import { Share } from '@/components/ui/share';
 
 interface ThreadSiteHeaderProps {
   threadId: string;
@@ -121,7 +123,7 @@ export function SiteHeader({
   return (
     <>
       <header className={cn(
-        "bg-background sticky top-0 flex h-14 shrink-0 items-center gap-2 z-20 w-full",
+        "bg-white dark:bg-background sticky top-0 flex h-14 shrink-0 items-center gap-2 z-20 w-full",
         isMobile && "px-2"
       )}>
         {isMobile && (
@@ -169,7 +171,8 @@ export function SiteHeader({
             <Skeleton className="h-5 w-32" />
           ) : (
             <div
-              className="text-base font-medium text-muted-foreground hover:text-foreground cursor-pointer flex items-center"
+              className="thread-header-text text-base font-medium text-muted-foreground hover:text-foreground cursor-pointer flex items-center"
+              style={{fontSize: '1.25rem'}}
               onClick={startEditing}
               title="Click to rename project"
             >
@@ -208,7 +211,7 @@ export function SiteHeader({
                     onClick={onViewFiles}
                     className="h-9 w-9 cursor-pointer"
                   >
-                    <FolderOpen className="h-4 w-4" />
+                    <Folder className="h-5 w-5" />
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent>
@@ -224,7 +227,7 @@ export function SiteHeader({
                     onClick={openShareModal}
                     className="h-9 w-9 cursor-pointer"
                   >
-                    <Share2 className="h-4 w-4" />
+                    <Share className="h-5 w-5" />
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent>
@@ -240,7 +243,7 @@ export function SiteHeader({
                     onClick={onToggleSidePanel}
                     className="h-9 w-9 cursor-pointer"
                   >
-                    <PanelRightOpen className="h-4 w-4" />
+                    <PanelRightOpen className="h-5 w-5" />
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent>
@@ -259,4 +262,4 @@ export function SiteHeader({
       />
     </>
   )
-} 
+}

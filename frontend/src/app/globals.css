@@ -8,7 +8,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: 'Helvetica Neue', var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -231,7 +231,7 @@
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
+  --primary: oklch(0.4619 0.275 264.9);
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(54.65% 0.246 262.87);
   --secondary-foreground: oklch(0.205 0 0);
@@ -250,14 +250,15 @@
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
   --radius: 0.625rem;
-  --sidebar: oklch(98.46% 0.002 247.84);
-  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar: oklch(23.26% 0.123 265.7);
+  --sidebar-foreground: oklch(1 0 0 / 0.8);
   --sidebar-primary: oklch(0.205 0 0);
   --sidebar-primary-foreground: oklch(0.985 0 0);
   --sidebar-accent: oklch(0.97 0 0);
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  --chat-bubble-blue: oklch(0.9275 0.019 279.52);
 }
 
 .dark {
@@ -293,6 +294,7 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(0.269 0 0);
   --sidebar-ring: oklch(0.439 0 0);
+  --chat-bubble-blue: oklch(0.2 0.05 279.52);
 }
 
 @layer base {
@@ -350,6 +352,11 @@
   /* Ensure reasonable spacing */
   & > * + * {
     margin-top: 0.75em;
+  }
+
+  /* Change base text color to blue (light mode only) */
+  &:not(.dark *) {
+    color: oklch(0.2601 0.107 281.83);
   }
 
   /* Fix headings to be more compact in chat context */
@@ -547,14 +554,14 @@
 }
 
 .bg-pattern-grid {
-  background-image: 
+  background-image:
     linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
   background-size: 20px 20px;
 }
 
 .dark .bg-pattern-grid {
-  background-image: 
+  background-image:
     linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   background-size: 20px 20px;
@@ -636,4 +643,19 @@
   animation: var(--animate-shimmer);
   width: 100%;
   transform: translateX(-100%);
+}
+
+/* Chat bubble user */
+.chat-bubble-user {
+  background-color: var(--chat-bubble-blue);
+}
+
+/* Thread header text - blue in light mode, default in dark mode */
+.thread-header-text {
+  color: oklch(0.2601 0.107 281.83);
+}
+
+/* Dark mode - use default theme colors */
+.dark .thread-header-text {
+  color: hsl(var(--muted-foreground)); /* Use theme's muted-foreground in dark mode */
 }

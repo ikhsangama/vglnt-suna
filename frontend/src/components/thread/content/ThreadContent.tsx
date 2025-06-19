@@ -13,7 +13,7 @@ import {
     getUserFriendlyToolName,
     safeJsonParse,
 } from '@/components/thread/utils';
-import { KortixLogo } from '@/components/sidebar/kortix-logo';
+import { SandbayLogo } from '@/components/sidebar/sandbay-logo';
 import { AgentLoader } from './loader';
 
 // Define the set of tags whose raw XML should be hidden during streaming
@@ -136,7 +136,7 @@ export function renderMarkdownContent(
                 <button
                     key={toolCallKey}
                     onClick={() => handleToolClick(messageId, toolName)}
-                    className="inline-flex items-center gap-1.5 py-1 px-1 my-1 text-xs text-muted-foreground bg-muted hover:bg-muted/80 rounded-md transition-colors cursor-pointer border border-neutral-200 dark:border-neutral-700/50"
+                    className="inline-flex items-center gap-1.5 py-1 px-1 my-1 text-xs text-muted-foreground bg-white dark:bg-muted hover:bg-gray-50 dark:hover:bg-muted/80 rounded-md transition-colors cursor-pointer border border-neutral-200 dark:border-neutral-700/50"
                 >
                     <div className='border-2 bg-gradient-to-br from-neutral-200 to-neutral-300 dark:from-neutral-700 dark:to-neutral-800 flex items-center justify-center p-0.5 rounded-sm border-neutral-400/20 dark:border-neutral-600'>
                         <IconComponent className="h-3.5 w-3.5 text-muted-foreground flex-shrink-0" />
@@ -379,7 +379,7 @@ export const ThreadContent: React.FC<ThreadContentProps> = ({
                                         if (debugMode) {
                                             return (
                                                 <div key={group.key} className="flex justify-end">
-                                                    <div className="inline-flex max-w-[85%] rounded-xl bg-primary/10 px-4 py-3">
+                                                    <div className="inline-flex max-w-[85%] rounded-xl chat-bubble-blue px-4 py-3">
                                                         <pre className="text-xs font-mono whitespace-pre-wrap overflow-x-auto">
                                                             {message.content}
                                                         </pre>
@@ -402,7 +402,7 @@ export const ThreadContent: React.FC<ThreadContentProps> = ({
 
                                         return (
                                             <div key={group.key} className="flex justify-end">
-                                                <div className="inline-flex max-w-[85%] rounded-xl bg-primary/10 px-4 py-3">
+                                                <div className="inline-flex max-w-[85%] rounded-xl chat-bubble-user px-4 py-3">
                                                     <div className="space-y-3">
                                                         {cleanContent && (
                                                             <Markdown className="text-sm prose prose-sm dark:prose-invert chat-markdown max-w-none [&>:first-child]:mt-0 prose-headings:mt-3">{cleanContent}</Markdown>
@@ -419,7 +419,7 @@ export const ThreadContent: React.FC<ThreadContentProps> = ({
                                             <div key={group.key} ref={groupIndex === groupedMessages.length - 1 ? latestMessageRef : null}>
                                                 <div className="flex items-start gap-3">
                                                     <div className="flex-shrink-0 w-5 h-5 mt-2 rounded-md flex items-center justify-center ml-auto mr-2">
-                                                        <KortixLogo />
+                                                      <SandbayLogo/>
                                                     </div>
                                                     <div className="flex-1">
                                                         <div className="inline-flex max-w-[90%] rounded-lg px-4 text-sm">
@@ -650,7 +650,7 @@ export const ThreadContent: React.FC<ThreadContentProps> = ({
                                     <div ref={latestMessageRef} className='w-full h-22 rounded'>
                                         <div className="flex items-start gap-3">
                                             <div className="flex-shrink-0 w-5 h-5 rounded-md flex items-center justify-center bg-primary/10">
-                                                <KortixLogo />
+                                                <SandbayLogo />
                                             </div>
                                             <div className="flex-1 space-y-2 w-full h-12">
                                                 <AgentLoader />
@@ -664,7 +664,7 @@ export const ThreadContent: React.FC<ThreadContentProps> = ({
                                 <div ref={latestMessageRef}>
                                     <div className="flex items-start gap-3">
                                         <div className="flex-shrink-0 w-5 h-5 mt-2 rounded-md flex items-center justify-center bg-primary/10">
-                                            <KortixLogo />
+                                            <SandbayLogo />
                                         </div>
                                         <div className="flex-1 space-y-2">
                                             <div className="animate-shimmer inline-flex items-center gap-1.5 py-1.5 px-3 text-xs font-medium text-primary bg-primary/10 rounded-md border border-primary/20">
@@ -683,7 +683,7 @@ export const ThreadContent: React.FC<ThreadContentProps> = ({
                                 <div ref={latestMessageRef}>
                                     <div className="flex items-start gap-3">
                                         <div className="flex-shrink-0 w-5 h-5 mt-2 rounded-md flex items-center justify-center bg-primary/10">
-                                            <KortixLogo />
+                                            <SandbayLogo />
                                         </div>
                                         <div className="flex-1 space-y-2">
                                             <div className="max-w-[90%] px-4 py-3 text-sm">
@@ -718,4 +718,4 @@ export const ThreadContent: React.FC<ThreadContentProps> = ({
     );
 };
 
-export default ThreadContent; 
+export default ThreadContent;
